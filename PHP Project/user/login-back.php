@@ -24,6 +24,12 @@ if (isset($_POST['submit'])) {
         header("location:../user/login.php?error=wrong");
         exit();
     }
-} else {
-    //    echo 'lala';
+} elseif (isset($_POST['quenMK'])) {
+    echo '<h1>Mời bạn nhập email đã đăng kí tài khoản tại shop</h1>
+        <form action="sendEmailmk.php" method="post">
+        <label for="email">Mời bạn nhập email của mình</label>
+        <input type="text" name="email">
+        <input type="submit" name="submit_email" value="Gửi">
+        </form>
+    ';
 }

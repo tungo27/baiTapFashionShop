@@ -2,17 +2,17 @@
 require_once('../model/connect.php');
 
 if (isset($_GET['error'])) {
-	$error = "Vui lòng kiểm tra lại tài khoản hoặc mật khẩu của bạn!";
+    $error = "Vui lòng kiểm tra lại tài khoản hoặc mật khẩu của bạn!";
 } else {
-	$error = "";
+    $error = "";
 }
 
 if (isset($_GET['rs'])) {
-	echo "<script type=\"text/javascript\">alert(\"Bạn đã đăng ký thành công!\");</script>";
-	echo "<script type=\"text/javascript\">alert(\"Vui lòng đăng nhập để mua hàng!\");</script>";
+    echo "<script type=\"text/javascript\">alert(\"Bạn đã đăng ký thành công!\");</script>";
+    echo "<script type=\"text/javascript\">alert(\"Vui lòng đăng nhập để mua hàng!\");</script>";
 }
 if (isset($_GET['rf'])) {
-	echo "<script type=\"text/javascript\">alert(\"Đăng ký thất bại!\");</script>";
+    echo "<script type=\"text/javascript\">alert(\"Đăng ký thất bại!\");</script>";
 }
 ?>
 
@@ -70,20 +70,20 @@ if (isset($_GET['rf'])) {
             <div class="col-sm-12 col-md-12 account">
                 <div class="row">
                     <?php
-					if (isset($_SESSION['username'])) {
-					?>
-                    <i class="fa fa-user fa-lg"></i>
-                    <span><?php echo $_SESSION['username'] ?></span> &nbsp;
-                    <span><i class="fa fa-sign-out"></i><a href="user/logout.php"> Đăng xuất </a></span>
+                    if (isset($_SESSION['username'])) {
+                    ?>
+                        <i class="fa fa-user fa-lg"></i>
+                        <span><?php echo $_SESSION['username'] ?></span> &nbsp;
+                        <span><i class="fa fa-sign-out"></i><a href="user/logout.php"> Đăng xuất </a></span>
                     <?php   } else {
-					?>
-                    <i class="fa fa-user fa-lg"></i>
-                    <a href="login.php"> Đăng nhập </a> &nbsp;
-                    <i class="fa fa-users fa-lg"></i>
-                    <a href="register.php"> Đăng ký </a>
+                    ?>
+                        <i class="fa fa-user fa-lg"></i>
+                        <a href="login.php"> Đăng nhập </a> &nbsp;
+                        <i class="fa fa-users fa-lg"></i>
+                        <a href="register.php"> Đăng ký </a>
                     <?php
-					}
-					?>
+                    }
+                    ?>
                 </div>
             </div>
             <div class="clearfix"></div>
@@ -193,6 +193,10 @@ if (isset($_GET['rf'])) {
                                     <div class="form-group">
                                         <input type="submit" name="submit" class="btn btn-info btn-block btn-lg"
                                             value="Đăng nhập">
+                                    </div><!-- /form-group -->
+                                    <div class="form-group">
+                                        <input type="submit" name="quenMK" class="btn btn-info btn-block btn-lg"
+                                            value="Quên Mật Khẩu">
                                     </div><!-- /form-group -->
                                 </div><!-- /col -->
                             </div><!-- /row -->

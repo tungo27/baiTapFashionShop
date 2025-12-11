@@ -26,11 +26,11 @@ error_reporting(2);
                         while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                             $i++;
                     ?>
-                            <div class="item" id="<?php if (isset($i)) echo "a" . $i ?>">
-                                <img src="<?php echo "../" . $row['image']; ?>" alt="Slideshow"
-                                    style="width:100%; height: 100%;">
+                    <div class="item" id="<?php if (isset($i)) echo "a" . $i ?>">
+                        <img src="<?php echo "./" . $row['image']; ?>" alt="Slideshow"
+                            style="width:100%; height: 100%;">
 
-                            </div>
+                    </div>
                     <?php }
                     } ?>
                 </div>
@@ -49,8 +49,8 @@ error_reporting(2);
     </div><!-- /row -->
 
     <script type="text/javascript">
-        var e = document.getElementById('a1');
-        e.classList.add("active");
+    var e = document.getElementById('a1');
+    e.classList.add("active");
     </script>
 
     </div><!-- /container -->

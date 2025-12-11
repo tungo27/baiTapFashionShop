@@ -8,14 +8,14 @@
             $result = $dbh->query($sql);
             while ($kq = $result->fetch(PDO::FETCH_ASSOC)) {
             ?>
-            <div class="col-md-3 col-sm-4">
-                <div class="thumbnail">
-                    <div class="banner">
-                        <img src="<?php echo "../" . $kq['image']; ?>" slide alt="Generic placeholder thumbnail"
-                            width="100%" height="160">
+                <div class="col-md-3 col-sm-4">
+                    <div class="thumbnail">
+                        <div class="banner">
+                            <img src="<?php echo "./" . $kq['image']; ?>" slide alt="Generic placeholder thumbnail"
+                                width="100%" height="160">
+                        </div>
                     </div>
                 </div>
-            </div>
             <?php } ?>
         </div>
     </div>

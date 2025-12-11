@@ -14,11 +14,6 @@ if (isset($_GET['ls'])) {
 
 <header>
     <div class="container-fluid header_top wow bounceIn" data-wow-delay="0.1s">
-        <!-- <div class="col-sm-10 col-md-10">
-            <div class="header_top_left"> <span><i class="fa fa-phone"></i></span> <span>0397 450 200 | 0552 980
-                    270</span>&nbsp;&nbsp;&nbsp; <span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>
-                <span>hoihmy2712@gmail.com</span> </div>
-        </div> -->
         <div class="col-sm-2 col-md-2">
             <div class="header_top_right">
                 <a href="https://www.facebook.com/" target="_blank" title="facebook"><i class="fa fa-facebook"></i></a>
@@ -36,7 +31,7 @@ if (isset($_GET['ls'])) {
     <div class="container">
         <!-- Logo -->
         <div class="title">
-            <a href="index.php" title="MyLiShop"> <img src="/images/logohong.png" width="260px;" height="180px;"> </a>
+            <a href="index.php" title="MyLiShop"> <img src="./images/logohong.png" width="260px;" height="180px;"> </a>
         </div>
         <!-- /logo -->
         <div class="col-sm-12 col-md-12 account">
@@ -92,6 +87,12 @@ if (isset($_GET['ls'])) {
                             </ul>
                         </li>
                         <li><a href="lienhe.php"> Liên Hệ </a>
+                        </li>
+                        <?php
+                        if (isset($_SESSION['username'])) {
+                            echo "<li><a href='viewOrder.php'> Xem đơn hàng </a>";
+                        }
+                        ?>
                         </li>
                     </ul>
                     <!-- search area -->

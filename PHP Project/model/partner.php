@@ -9,14 +9,14 @@
             while ($kq = $result->fetch(PDO::FETCH_ASSOC)) {
 
             ?>
-                <div class="col-md-2 col-sm-1">
-                    <div class="thumbnail">
-                        <div class="banner">
-                            <img src="<?php echo "../" . $kq['image']; ?>" slide alt="Generic placeholder thumbnail"
-                                width="100%" height="160">
-                        </div>
+            <div class="col-md-2 col-sm-1">
+                <div class="thumbnail">
+                    <div class="banner">
+                        <img src="<?php echo "./" . $kq['image']; ?>" slide alt="Generic placeholder thumbnail"
+                            width="100%" height="160">
                     </div>
                 </div>
+            </div>
             <?php } ?>
         </div>
     </div>

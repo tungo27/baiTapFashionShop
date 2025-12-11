@@ -3,6 +3,7 @@ session_start();
 error_reporting(E_ALL ^ E_DEPRECATED);
 require_once '../model/connect.php';
 
+
 if (isset($_POST['submit'])) {
     if (isset($_POST['fullname'])) {
         $fullname = $_POST['fullname'];
@@ -32,6 +33,10 @@ if (isset($_POST['submit'])) {
                 VALUES ('$fullname', '$username', '$password', '$email', $phone, '$address', 1)";
     $res = $dbh->query($sql);
     if ($res) {
+        if (isset($email)) {
+            // Biến $email đã được gán giá trị ở phần trên
+            include 'sendEmail.php';
+        }
         header("location:login.php?rs=success");
         exit();
     } else {
