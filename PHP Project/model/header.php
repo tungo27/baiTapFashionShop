@@ -109,7 +109,7 @@ if (isset($_GET['ls'])) {
                             </div>
                             <!-- /input-group -->
                             <div class="cart-total">
-                                <a class="bg_cart" href="../viewcart.php" title="Giỏ hàng">
+                                <a class="bg_cart" href="viewcart.php" title="Giỏ hàng">
                                     <button type="button" class="btn header-cart">
                                         <span class="fa fa-shopping-cart"></span>&nbsp;
                                         <span id="cart-total">

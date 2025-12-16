@@ -19,6 +19,7 @@ if (isset($_POST['email'])) {
     $kq = $dbh->query($sql);
     $user = $kq->fetch(PDO::FETCH_ASSOC);
     if ($user) {
+        // print_r($user);
         // Tìm thấy người dùng
         $email = $user['email'];
         $password = $user['password'];
@@ -34,7 +35,7 @@ try {
     $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
     $mail->Username   = 'minhtu080906@gmail.com';                     //SMTP username
-    $mail->Password   = 'usrw tclz olvu hcsb';                               //SMTP password
+    $mail->Password   = 'usrw tclz olvu hcsb';                         //SMTP password
     // Cấu hình thay thế (STARTTLS qua cổng 587)
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Đổi sang STARTTLS
     $mail->Port = 587; // Đổi sang cổng 587
@@ -55,6 +56,7 @@ try {
 
     $mail->send();
     echo 'Message has been sent';
+    header("Location:../index.php");
 } catch (Exception $e) {
     echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
 }

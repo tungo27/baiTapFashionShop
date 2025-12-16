@@ -19,6 +19,12 @@ if (isset($_POST['submit'])) {
 
     if (isset($_POST['email'])) {
         $email = $_POST['email'];
+        $sql = "SELECT * FROM users WHERE email = '$email'";
+        $kq = $dbh->query($sql); # trả về dạng bảng dữ liệu
+        $user = $kq->fetch(PDO::FETCH_ASSOC); # chuyển từ bảng sang mảng
+        if ($email = $user['email']) {
+            echo "<h5>Hiện tại đã có tài khoản sử dụng mail của bạn<br>Hãy sử dụng mail khác</h5>";
+        }
     }
 
     if (isset($_POST['address'])) {

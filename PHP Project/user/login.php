@@ -194,10 +194,7 @@ if (isset($_GET['rf'])) {
                                         <input type="submit" name="submit" class="btn btn-info btn-block btn-lg"
                                             value="Đăng nhập">
                                     </div><!-- /form-group -->
-                                    <div class="form-group">
-                                        <input type="submit" name="quenMK" class="btn btn-info btn-block btn-lg"
-                                            value="Quên Mật Khẩu">
-                                    </div><!-- /form-group -->
+
                                 </div><!-- /col -->
                             </div><!-- /row -->
                         </form>
@@ -205,6 +202,7 @@ if (isset($_GET['rf'])) {
 
                     <div class="panel-footer">
                         <p>Nếu bạn chưa có tài khoản. Vui lòng <a href="register.php" onclick=""> Đăng ký </a></p>
+                        <p>Nếu bạn quên mật khẩu. <a href="quenmk.php" onclick=""> Quên mật khẩu </a></p>
                     </div><!-- /panel-footer -->
 
                 </div><!-- /panel-danger -->

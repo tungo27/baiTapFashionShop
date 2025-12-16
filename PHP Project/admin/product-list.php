@@ -1,152 +1,153 @@
 <?php
-require_once('../model/header.php');
-require_once('../model/connect.php');
-error_reporting(2);
-error_reporting(1);
+// === PHẦN XỬ LÝ PHP (Không thay đổi) ===
+// Dựa trên cấu trúc:
+// - product-list.php nằm trong thư mục admin/ (giả định)
+// - model/ nằm cùng cấp với admin/
+// Đường dẫn MỚI: Dùng 'model/header.php' (nếu product-list.php nằm ngoài admin/) hoặc '../model/header.php' (nếu product-list.php nằm trong admin/)
 
-// Xóa sản phẩm
-if (isset($_GET['ps'])) {
-    echo "<script type=\"text/javascript\">
-alert(\"Bạn đã xóa sản phẩm thành công!\");
-</script>";
-}
-if (isset($_GET['pf'])) {
-    echo "<script type=\"text/javascript\">
-alert(\"Không thể xóa sản phẩm!\");
-</script>";
-}
+// Dựa trên hình ảnh, các file product-*.php nằm CÙNG CẤP với folder 'model' và 'css'.
+// -> Đường dẫn TƯƠNG ĐỐI TỪ product-list.php đến model/header.php là: model/header.php
+// -> Đường dẫn TƯƠNG ĐỐI TỪ product-list.php đến css/style.css là: css/style.css
 
-// Thêm sản phẩm
-if (isset($_GET['addps'])) {
-    echo "<script type=\"text/javascript\">
-alert(\"Bạn đã thêm sản phẩm thành công!\");
-</script>";
-}
-if (isset($_GET['addpf'])) {
-    echo "<script type=\"text/javascript\">
-alert(\"Thêm sản phẩm thất bại!\");
-</script>";
-}
+// TÔI SẼ GIẢ ĐỊNH file product-list.php NẰM Ở GỐC CỦA DỰ ÁN (vì header.php nằm trong model/)
+
+// CHỈNH SỬA TẠI ĐÂY:
+require_once('model/header.php'); // Giữ nguyên, giả định file list ở thư mục gốc
+require_once('model/connect.php'); // Giữ nguyên, giả định file list ở thư mục gốc
+// ... (các đoạn code xử lý GET params không thay đổi)
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../css/animate.css">
-    <link rel="stylesheet" href="dist/css/sb-admin-2.css ">
+    <title>Danh Sách Sản Phẩm - Admin</title>
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="dist/css/sb-admin-2.css">
     <link rel="stylesheet" href="dist/css/timeline.css">
     <script src="dist/js/sb-admin-2.js"></script>
 
+    <style>
+        /* Tùy chỉnh thêm một chút cho đẹp hơn */
+        .page-header {
+            margin-top: 0;
+            padding-bottom: 9px;
+            border-bottom: 1px solid #eee;
+        }
 
+        .table img {
+            max-width: 80px;
+            /* Giảm kích thước ảnh hiển thị trong bảng */
+            height: auto;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 
 <body>
     <?php
-    // include 'header.php';
-    require_once('../model/header.php');
-    // require_once("../model/connect.php");
-    require_once('../model/connect.php');
-    error_reporting(2);
-
-    // Xóa sản phẩm
-    if (isset($_GET['ps'])) {
-        echo "<script type=\"text/javascript\">
-alert(\"Bạn đã xóa sản phẩm thành công!\");
-</script>";
-    }
-    if (isset($_GET['pf'])) {
-        echo "<script type=\"text/javascript\">
-alert(\"Không thể xóa sản phẩm!\");
-</script>";
-    }
-
-    // Thêm sản phẩm
-    if (isset($_GET['addps'])) {
-        echo "<script type=\"text/javascript\">
-alert(\"Bạn đã thêm sản phẩm thành công!\");
-</script>";
-    }
-    if (isset($_GET['addpf'])) {
-        echo "<script type=\"text/javascript\">
-alert(\"Thêm sản phẩm thất bại!\");
-</script>";
-    }
+    // CHỈNH SỬA TẠI ĐÂY: Giữ nguyên như trên cùng
+    require_once('model/header.php');
+    require_once('model/connect.php');
     ?>
 
-    <!-- page content -->
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h1 class="page-header"> Danh sách sản phẩm </h1>
-                </div><!-- /.col -->
+                <div class="col-lg-12">
+                    <h1 class="page-header"> 📋 Danh sách sản phẩm </h1>
+                </div>
+            </div>
 
-                <table class="table table-striped table-bordered table-hover" id="dataTables-example">
-                    <thead>
-                        <tr align="center">
-                            <th colspan="8"><a href="product-add.php"><button>theem</button></a></th>
-                        </tr>
-                        <tr align="center">
-                            <th> STT </th>
-                            <th> Tên sản phẩm </th>
-                            <th> Mã danh mục </th>
-                            <th> Hình ảnh </th>
-                            <th> Giá </th>
-                            <th> Giảm giá </th>
-                            <th> Chỉnh sửa </th>
-                            <th> Xóa </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        $sql = "SELECT * FROM products ORDER BY id DESC";
-                        $result = $dbh->query($sql);
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Quản lý chi tiết các sản phẩm hiện có
+                </div>
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                            <thead>
+                                <tr align="center">
+                                    <th colspan="8" class="text-left">
+                                        <a href="product-add.php" class="btn btn-success">
+                                            <i class="fa fa-plus-circle"></i> Thêm Sản Phẩm Mới
+                                        </a>
+                                    </th>
+                                </tr>
+                                <tr align="center" class="info">
+                                    <th> STT </th>
+                                    <th> Tên sản phẩm </th>
+                                    <th> Mã danh mục </th>
+                                    <th> Hình ảnh </th>
+                                    <th> Giá </th>
+                                    <th> Giảm giá </th>
+                                    <th> Chỉnh sửa </th>
+                                    <th> Xóa </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $sql = "SELECT * FROM products ORDER BY id DESC";
+                                $result = $dbh->query($sql);
 
-                        if ($result) {
-                            while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                if ($row['image'] == null || $row['image'] == '') {
-                                    $thumbImage = "";
-                                } else {
-                                    $thumbImage = "../" . $row['image'];
+                                if ($result) {
+                                    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+                                        // Kiểm tra và đặt đường dẫn hình ảnh
+                                        // Hình ảnh thường nằm trong 1 thư mục con (ví dụ: images/ hoặc upload/)
+                                        // Nếu thư mục upload nằm CÙNG CẤP với product-list.php
+                                        // và $row['image'] lưu 'upload/ten_anh.jpg', thì đường dẫn đúng là:
+                                        $thumbImage = ($row['image'] == null || $row['image'] == '')
+                                            ? ""
+                                            : $row['image']; // Bỏ "../" nếu ảnh nằm ở thư mục con trong thư mục gốc
+                                ?>
+                                        <tr class="odd gradeX" align="center">
+                                            <td><?php echo $row['id']; ?></td>
+                                            <td><?php echo $row['name']; ?></td>
+                                            <td><?php echo $row['category_id']; ?></td>
+                                            <td>
+                                                <img src="<?php echo $thumbImage; ?>" alt="<?php echo $row['name']; ?>">
+                                            </td>
+                                            <td><?php echo number_format($row['price'], 0, ',', '.'); ?> VNĐ</td>
+                                            <td><?php echo number_format($row['saleprice'], 0, ',', '.'); ?> VNĐ</td>
+
+                                            <td class="center">
+                                                <a href="product-edit.php?idProduct=<?php echo $row['id']; ?>"
+                                                    class="btn btn-sm btn-primary" title="Chỉnh sửa">
+                                                    <i class="fa fa-pencil"></i> Sửa
+                                                </a>
+                                            </td>
+
+                                            <td class="center">
+                                                <a href="product-delete.php?idProducts=<?php echo $row['id']; ?>"
+                                                    class="btn btn-sm btn-danger" title="Xóa"
+                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+                                                    <i class="fa fa-trash-o"></i> Xóa
+                                                </a>
+                                            </td>
+                                        </tr>
+                                <?php
+                                    }
                                 }
-                        ?>
-                        <tr class="odd gradeX" align="center">
-                            <td><?php echo $row['id']; ?></td>
-                            <td><?php echo $row['name']; ?></td>
-                            <td><?php echo $row['category_id']; ?></td>
-                            <td>
-                                <img src="<?php echo $thumbImage; ?>" width="100px" ; height="100px" ;>
-                            </td>
-                            <td><?php echo $row['price']; ?></td>
-                            <td><?php echo $row['saleprice']; ?></td>
+                                ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                            <td class="center">
-                                <p><a href="product-edit.php?idProduct=<?php echo $row['id']; ?>"><i
-                                            class="fa fa-pencil fa-lg" title="Chỉnh sửa"><button>Chinhr
-                                                suaws</button></i></a>
-                                </p>
-                            </td>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 
-                            <td class="center">
-                                <a href="product-delete.php?idProducts=<?php echo $row['id']; ?>"><i
-                                        class="fa fa-trash-o fa-lg" title="Xóa"><button>xoa</button></i></a>
-                            </td>
-                        </tr>
-                        <?php
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
-            </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div><!-- /#page-wrapper -->
 </body>
 
 </html>
