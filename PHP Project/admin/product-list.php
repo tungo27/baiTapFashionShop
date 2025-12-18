@@ -1,20 +1,6 @@
 <?php
-// === PHẦN XỬ LÝ PHP (Không thay đổi) ===
-// Dựa trên cấu trúc:
-// - product-list.php nằm trong thư mục admin/ (giả định)
-// - model/ nằm cùng cấp với admin/
-// Đường dẫn MỚI: Dùng 'model/header.php' (nếu product-list.php nằm ngoài admin/) hoặc '../model/header.php' (nếu product-list.php nằm trong admin/)
 
-// Dựa trên hình ảnh, các file product-*.php nằm CÙNG CẤP với folder 'model' và 'css'.
-// -> Đường dẫn TƯƠNG ĐỐI TỪ product-list.php đến model/header.php là: model/header.php
-// -> Đường dẫn TƯƠNG ĐỐI TỪ product-list.php đến css/style.css là: css/style.css
-
-// TÔI SẼ GIẢ ĐỊNH file product-list.php NẰM Ở GỐC CỦA DỰ ÁN (vì header.php nằm trong model/)
-
-// CHỈNH SỬA TẠI ĐÂY:
-require_once('model/header.php'); // Giữ nguyên, giả định file list ở thư mục gốc
-require_once('model/connect.php'); // Giữ nguyên, giả định file list ở thư mục gốc
-// ... (các đoạn code xử lý GET params không thay đổi)
+require_once('../model/connect.php'); //
 ?>
 
 <!DOCTYPE html>
@@ -25,9 +11,9 @@ require_once('model/connect.php'); // Giữ nguyên, giả định file list ở
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh Sách Sản Phẩm - Admin</title>
 
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -36,34 +22,32 @@ require_once('model/connect.php'); // Giữ nguyên, giả định file list ở
     <script src="dist/js/sb-admin-2.js"></script>
 
     <style>
-        /* Tùy chỉnh thêm một chút cho đẹp hơn */
-        .page-header {
-            margin-top: 0;
-            padding-bottom: 9px;
-            border-bottom: 1px solid #eee;
-        }
+    /* Tùy chỉnh thêm một chút cho đẹp hơn */
+    .page-header {
+        margin-top: 0;
+        padding-bottom: 9px;
+        border-bottom: 1px solid #eee;
+    }
 
-        .table img {
-            max-width: 80px;
-            /* Giảm kích thước ảnh hiển thị trong bảng */
-            height: auto;
-            border-radius: 4px;
-        }
+    .table img {
+        max-width: 80px;
+        /* Giảm kích thước ảnh hiển thị trong bảng */
+        height: auto;
+        border-radius: 4px;
+    }
     </style>
 </head>
 
 <body>
     <?php
-    // CHỈNH SỬA TẠI ĐÂY: Giữ nguyên như trên cùng
-    require_once('model/header.php');
-    require_once('model/connect.php');
+    require_once('../model/connect.php');
     ?>
 
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header"> 📋 Danh sách sản phẩm </h1>
+                    <h1 class="page-header"> Danh sách sản phẩm </h1>
                 </div>
             </div>
 
@@ -71,6 +55,9 @@ require_once('model/connect.php'); // Giữ nguyên, giả định file list ở
                 <div class="panel-heading">
                     Quản lý chi tiết các sản phẩm hiện có
                 </div>
+
+                <span><i class="fa fa-sign-out"></i><a href="../user/logout.php"> Đăng xuất </a></span>
+
                 <div class="panel-body">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-hover" id="dataTables-example">
@@ -100,39 +87,35 @@ require_once('model/connect.php'); // Giữ nguyên, giả định file list ở
 
                                 if ($result) {
                                     while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                                        // Kiểm tra và đặt đường dẫn hình ảnh
-                                        // Hình ảnh thường nằm trong 1 thư mục con (ví dụ: images/ hoặc upload/)
-                                        // Nếu thư mục upload nằm CÙNG CẤP với product-list.php
-                                        // và $row['image'] lưu 'upload/ten_anh.jpg', thì đường dẫn đúng là:
                                         $thumbImage = ($row['image'] == null || $row['image'] == '')
                                             ? ""
-                                            : $row['image']; // Bỏ "../" nếu ảnh nằm ở thư mục con trong thư mục gốc
+                                            : '../' . $row['image'];
                                 ?>
-                                        <tr class="odd gradeX" align="center">
-                                            <td><?php echo $row['id']; ?></td>
-                                            <td><?php echo $row['name']; ?></td>
-                                            <td><?php echo $row['category_id']; ?></td>
-                                            <td>
-                                                <img src="<?php echo $thumbImage; ?>" alt="<?php echo $row['name']; ?>">
-                                            </td>
-                                            <td><?php echo number_format($row['price'], 0, ',', '.'); ?> VNĐ</td>
-                                            <td><?php echo number_format($row['saleprice'], 0, ',', '.'); ?> VNĐ</td>
+                                <tr class="odd gradeX" align="center">
+                                    <td><?php echo $row['id']; ?></td>
+                                    <td><?php echo $row['name']; ?></td>
+                                    <td><?php echo $row['category_id']; ?></td>
+                                    <td>
+                                        <img src="<?php echo $thumbImage; ?>" alt="<?php echo $row['name']; ?>">
+                                    </td>
+                                    <td><?php echo number_format($row['price'], 0, ',', '.'); ?> VNĐ</td>
+                                    <td><?php echo number_format($row['saleprice'], 0, ',', '.'); ?> VNĐ</td>
 
-                                            <td class="center">
-                                                <a href="product-edit.php?idProduct=<?php echo $row['id']; ?>"
-                                                    class="btn btn-sm btn-primary" title="Chỉnh sửa">
-                                                    <i class="fa fa-pencil"></i> Sửa
-                                                </a>
-                                            </td>
+                                    <td class="center">
+                                        <a href="product-edit.php?idProduct=<?php echo $row['id']; ?>"
+                                            class="btn btn-sm btn-primary" title="Chỉnh sửa">
+                                            <i class="fa fa-pencil"></i> Sửa
+                                        </a>
+                                    </td>
 
-                                            <td class="center">
-                                                <a href="product-delete.php?idProducts=<?php echo $row['id']; ?>"
-                                                    class="btn btn-sm btn-danger" title="Xóa"
-                                                    onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
-                                                    <i class="fa fa-trash-o"></i> Xóa
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <td class="center">
+                                        <a href="product-delete.php?idProducts=<?php echo $row['id']; ?>"
+                                            class="btn btn-sm btn-danger" title="Xóa"
+                                            onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+                                            <i class="fa fa-trash-o"></i> Xóa
+                                        </a>
+                                    </td>
+                                </tr>
                                 <?php
                                     }
                                 }

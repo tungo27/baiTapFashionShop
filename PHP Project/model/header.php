@@ -71,8 +71,6 @@ if (isset($_GET['ls'])) {
                     <ul class="nav navbar-nav">
                         <li><a href="index.php"> Trang Chủ </a>
                         </li>
-                        <li><a href="introduceshop.php"> Dịch Vụ </a>
-                        </li>
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản Phẩm <b
                                     class="fa fa-caret-down"></b></a>
                             <ul class="dropdown-menu">

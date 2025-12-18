@@ -86,13 +86,10 @@ echo '
         <h1>Mời bạn nhập email đã đăng kí tài khoản tại shop</h1>
         <form action="sendEmailmk.php" method="post">
             <label for="email">Mời bạn nhập email của mình</label>
-            <input type="text" name="email" id="email" placeholder="">  
+            <input type="text" name="email" id="email" placeholder="">
             <input type="submit" name="submit_email" value="Gửi">
         </form>
     </div>
 </body>
 </html>
 ';
-
-// Lưu ý: Nếu bạn muốn tách HTML và PHP ra file riêng, chỉ cần giữ lại phần <html>...</html>
-// trong file HTML (ví dụ: `reset_password.html`) và điều chỉnh PHP để gọi form.

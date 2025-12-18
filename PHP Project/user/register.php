@@ -59,7 +59,6 @@
                                     </div><!-- /form-group -->
 
                                     <div class="form-group">
-                                        // phần nhập email
                                         <div class="input-group">
                                             <span class="input-group-addon"><span class="fa fa-envelope"></span></span>
                                             <input type="email" class="form-control" name="email"
@@ -129,7 +128,8 @@
                     <!-- panel-footer -->
                     <div class="panel-footer ">
                         <center>
-                            <img src="../images/logohong.png" width="230px;" height="110px;">
+                            <a href="/index.php">
+                                <img src="../images/logohong.png" width="230px;" height="110px;"></a>
                         </center>
                     </div><!-- /panel-footer -->
 

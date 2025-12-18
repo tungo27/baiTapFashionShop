@@ -4,7 +4,6 @@
 <?php
 
 require_once('../model/connect.php');
-require_once('../model/header.php');
 error_reporting(2);
 error_reporting(1);
 
@@ -117,6 +116,10 @@ if (isset($_GET['notimage'])) {
                                     <button type="reset" class="btn btn-default btn-block btn-lg"
                                         style="background: gray; color:white;"> Thiết lập lại </button>
                                 </div>
+
+                                <p class="text-center mt-4">
+                                    <a href='product-list.php' class="btn btn-primary btn-lg">Về Trang Chủ</a>
+                                </p>
                                 <!-- //Button Reset -->
                             </div>
                             <!-- /.row -->

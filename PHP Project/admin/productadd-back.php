@@ -24,9 +24,9 @@ if (isset($_POST['addProduct'])) {
         } else {
             $image = '';
 ?>
-            <script type="text/javascript">
-                window.location = 'product-add.php?notimage=notimage';
-            </script>
+<script type="text/javascript">
+window.location = 'product-add.php?notimage=notimage';
+</script>
 <?php
             $uploadOk = 0;
         }
@@ -81,7 +81,7 @@ if (isset($_POST['addProduct'])) {
     // truy vấn
     $sql = "INSERT INTO products(name, category_id, image, description, price, saleprice, created, quantity,  keyword, status) 
                 VALUES('$namePr', '$categoryPr', '$image', '$descriptPr', '$pricePr', '$salePricePr', now(), '$quantityPr', '$keywordPr', '$status');";
-    $result = mysqli_query($conn, $sql);
+    $result = $dbh->query($sql);
     if ($result) {
         header("location:product-list.php?addps=success");
         exit();

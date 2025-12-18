@@ -3,44 +3,39 @@ session_start();
 error_reporting(E_ALL ^ E_DEPRECATED);
 require_once '../model/connect.php';
 
-
 if (isset($_POST['submit'])) {
-    if (isset($_POST['fullname'])) {
-        $fullname = $_POST['fullname'];
-    }
+    // Thu thập dữ liệu từ form
+    $fullname = $_POST['fullname'] ?? '';
+    $username = $_POST['username'] ?? '';
+    $password = $_POST['password'] ?? '';
+    $email    = $_POST['email'] ?? '';
+    $address  = $_POST['address'] ?? '';
+    $phone    = $_POST['phone'] ?? '';
 
-    if (isset($_POST['username'])) {
-        $username = $_POST['username'];
-    }
+    // 1. Logic kiểm tra trùng Email
+    if (!empty($email)) {
+        $sql_check = "SELECT * FROM users WHERE email = '$email'";
+        $kq = $dbh->query($sql_check);
 
-    if (isset($_POST['password'])) {
-        $password = $_POST['password'];
-    }
-
-    if (isset($_POST['email'])) {
-        $email = $_POST['email'];
-        $sql = "SELECT * FROM users WHERE email = '$email'";
-        $kq = $dbh->query($sql); # trả về dạng bảng dữ liệu
-        $user = $kq->fetch(PDO::FETCH_ASSOC); # chuyển từ bảng sang mảng
-        if ($email = $user['email']) {
-            echo "<h5>Hiện tại đã có tài khoản sử dụng mail của bạn<br>Hãy sử dụng mail khác</h5>";
+        // Kiểm tra xem có dòng dữ liệu nào trả về không
+        if ($kq->rowCount() > 0) {
+            // Nếu trùng, chuyển hướng về trang đăng ký với thông báo lỗi
+            header("location:register.php?error=email_exists");
+            // Hoặc dùng session để lưu thông báo nếu bạn muốn hiển thị tại chỗ
+            $_SESSION['error_msg'] = "Email này đã được sử dụng. Vui lòng chọn email khác!";
+            exit(); // Quan trọng: Dừng ngay lập tức không cho chạy xuống phần INSERT
         }
     }
 
-    if (isset($_POST['address'])) {
-        $address = $_POST['address'];
-    }
+    // 2. Nếu không trùng, thực hiện Insert tài khoản mới (Role mặc định là 0)
+    $sql_insert = "INSERT INTO users (fullname, username, password, email, phone, address, role) 
+                   VALUES ('$fullname', '$username', '$password', '$email', '$phone', '$address', 0)";
 
-    if (isset($_POST['phone'])) {
-        $phone = $_POST['phone'];
-    }
+    $res = $dbh->query($sql_insert);
 
-    $sql = "INSERT INTO users (fullname, username, password, email, phone, address, role)
-                VALUES ('$fullname', '$username', '$password', '$email', $phone, '$address', 1)";
-    $res = $dbh->query($sql);
     if ($res) {
+        // Gửi email xác nhận nếu cần
         if (isset($email)) {
-            // Biến $email đã được gán giá trị ở phần trên
             include 'sendEmail.php';
         }
         header("location:login.php?rs=success");

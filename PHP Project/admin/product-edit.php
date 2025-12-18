@@ -10,7 +10,6 @@
 
 <body>
     <?php
-    include '../model/header.php';
     error_reporting(error_level: 1);
     include '../model/connect.php';
     error_reporting(error_level: 2);
@@ -39,6 +38,10 @@
                 <div class="col-lg-12">
                     <h1 class="page-header"> Chỉnh sửa sản phẩm </h1>
                 </div>
+
+                <p class="text-center mt-4">
+                    <a href='product-list.php' class="btn btn-primary btn-lg">Về Trang Chủ</a>
+                </p>
                 <!-- /.col-lg-12 -->
 
                 <div class="col-lg-7" style="padding-bottom:120px">

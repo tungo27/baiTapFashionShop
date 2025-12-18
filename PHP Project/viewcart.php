@@ -9,7 +9,7 @@ if (isset($_POST['update_cart'])) {
         $pid = (int)$pid;
         $qty = (int)$qty;
         if ($qty <= 0) {
-            // nếu số lượng ≤ 0 → xóa khỏi giỏ
+            // nếu số lượng ≤ 0 -> xóa khỏi giỏ
             unset($_SESSION['cart'][$pid]);
         } else {
             // cập nhật số lượng
@@ -83,25 +83,25 @@ $total = 0;
                             $subtotal = $prod['price'] * $qty;
                             $total += $subtotal;
                         ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($prod['name']); ?></td>
-                                <td>
-                                    <img src="<?php echo htmlspecialchars($prod['image']); ?>" class="img-fluid"
-                                        style="max-width: 80px;">
-                                </td>
-                                <td><?php echo number_format($prod['price'], 0, ',', '.'); ?>₫</td>
-                                <td style="width: 120px;">
-                                    <input type="number" class="form-control text-center" name="qty[<?php echo $pid; ?>]"
-                                        value="<?php echo $qty; ?>" min="0">
-                                </td>
-                                <td><?php echo number_format($subtotal, 0, ',', '.'); ?>₫</td>
-                                <td>
-                                    <a href="viewcart.php?remove=<?php echo $pid; ?>" class="btn btn-sm btn-danger"
-                                        onclick="return confirm('Bạn có chắc muốn xóa mặt hàng này?');">
-                                        Xóa
-                                    </a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td><?php echo htmlspecialchars($prod['name']); ?></td>
+                            <td>
+                                <img src="<?php echo htmlspecialchars($prod['image']); ?>" class="img-fluid"
+                                    style="max-width: 80px;">
+                            </td>
+                            <td><?php echo number_format($prod['price'], 0, ',', '.'); ?>₫</td>
+                            <td style="width: 120px;">
+                                <input type="number" class="form-control text-center" name="qty[<?php echo $pid; ?>]"
+                                    value="<?php echo $qty; ?>" min="0">
+                            </td>
+                            <td><?php echo number_format($subtotal, 0, ',', '.'); ?>₫</td>
+                            <td>
+                                <a href="viewcart.php?remove=<?php echo $pid; ?>" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Bạn có chắc muốn xóa mặt hàng này?');">
+                                    Xóa
+                                </a>
+                            </td>
+                        </tr>
                         <?php endforeach; ?>
 
                         <!-- Tổng tiền -->
