@@ -47,7 +47,7 @@
 
 /* đăng ký, đăng nhập */
 .account {
-  float: left;
+  /* float: left; */
   list-style-type: none;
   display: inline-block;
   margin-left: 10px;
@@ -501,4 +501,32 @@ fieldset {
 
 .back-to-top i {
   padding: 10px;
+}
+.checkout-container {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.order-container {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+}
+
+.order-card {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.order-header {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-bottom: 1px solid #dee2e6;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }

@@ -32,7 +32,6 @@ if (isset($_POST['editProduct'])) {
             $image = $_POST['image'];
             header("location:product-edit.php?notimage=notimage");
             exit();
-            $uploadOk = 0;
         }
     }
 
@@ -90,15 +89,15 @@ if (isset($_POST['editProduct'])) {
     $result = mysqli_query($conn, $sql);
     if ($result) {
 ?>
-<script type="text/javascript">
-window.location = 'product-edit.php?idProduct= <?php echo $idProduct; ?>&es=editsuccess';
-</script>
-<?php
+        <script type="text/javascript">
+            window.location = 'product-edit.php?idProduct= <?php echo $idProduct; ?>&es=editsuccess';
+        </script>
+    <?php
     } else {
     ?>
-<script type="text/javascript">
-window.location = 'product-edit.php?idProduct= <?php echo $idProduct; ?>&ef=editfail';
-</script>
+        <script type="text/javascript">
+            window.location = 'product-edit.php?idProduct= <?php echo $idProduct; ?>&ef=editfail';
+        </script>
 <?php
     }
 } else {

@@ -7,11 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Fashion MyLiShop</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="title" content="Fashion MyLiShop - fashion mylishop" />
-    <meta name="description" content="Fashion MyLiShop - fashion mylishop" />
-    <meta name="keywords" content="Fashion MyLiShop - fashion mylishop" />
-    <meta name="author" content="Hôih My" />
-    <meta name="author" content="Y Blir" />
     <link rel="icon" type="image/png" href="images/logohong.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -30,19 +25,6 @@
     <!-- button top -->
     <a href="#" class="back-to-top"><i class="fa fa-arrow-up"></i></a>
 
-    <!-- background -->
-    <!-- <div class="container-fluid">
-        <div id="bg">
-            <!-- <img width="100%" height="100%" src="images/background.jpg" /> -->
-    <?php
-    $sql = "SELECT image FROM slides WHERE id=1";
-    $result = $dbh->query($sql);
-    while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-    ?>
-        <img width="100%" height="100%" src="<?php echo $row['image']; ?>" alt="">
-    <?php } ?>
-    </div> -->
-    <!-- </div>/background -->
 
     <!-- Header -->
     <?php include("model/header.php"); ?>

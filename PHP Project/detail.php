@@ -51,71 +51,66 @@
                 $thum_Image = $row['image'];
             }
     ?>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="detail-product">
-                            <div class="row">
-                                <div class="col-md-5 col-sm-6 col-xs-12">
-                                    <div class="product-frame">
-                                        <div class="" style="margin-bottom: 20px; margin-top: 10px;">
-                                            <img src="<?php echo $thum_Image; ?>" width="100%" height="450">
-                                        </div>
-                                    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="detail-product">
+                    <div class="row">
+                        <div class="col-md-5 col-sm-6 col-xs-12">
+                            <div class="product-frame">
+                                <div class="" style="margin-bottom: 20px; margin-top: 10px;">
+                                    <img src="<?php echo $thum_Image; ?>" width="100%" height="450">
                                 </div>
-                                <!-- // hình ảnh -->
+                            </div>
+                        </div>
+                        <!-- // hình ảnh -->
 
-                                <div class="col-md-7 col-xs-6 col-xs-12">
-                                    <h2><?php echo $row['name']; ?></h2>
-                                    <hr>
-                                    <?php
+                        <div class="col-md-7 col-xs-6 col-xs-12">
+                            <h2><?php echo $row['name']; ?></h2>
+                            <hr>
+                            <?php
                                     if ($row['saleprice'] > 0) {
                                         $gia = $row['price'] - ($row['price'] / 100);
                                     ?>
-                                        <p class="price">Giá cũ: <?php echo $row['price']; ?><sup>đ</sup></p>
-                                        <p class="price">Giá giảm còn: <?php echo $gia; ?><sup>đ</sup></p>
-                                    <?php
+                            <p class="price">Giá cũ: <?php echo $row['price']; ?><sup>đ</sup></p>
+                            <p class="price">Giá giảm còn: <?php echo $gia; ?><sup>đ</sup></p>
+                            <?php
                                     } else {
                                     ?>
-                                        <p class="price">Giá sản phẩm: <?php echo $row['price']; ?><sup>đ</sup></p>
-                                    <?php
+                            <p class="price">Giá sản phẩm: <?php echo $row['price']; ?><sup>đ</sup></p>
+                            <?php
                                     }
                                     ?>
-                                    <hr>
-                                    <div class="button-order">
-                                        <div class="row">
-                                            <!-- <div class ="col-md-6">
-                                                <div class="form-group">
-                                                    <input type="number" name="soluong" class="form-control" placeholder="Nhập số lượng sản phẩm cần mua" >
-                                                </div>
-                                            </div> -->
-                                            <div class="col-md-6">
-                                                <a href="addcart.php?id=<?php echo $row['id']; ?>">
-                                                    <button class="btn btn-warning btn-md"> Đặt mua </button>
-                                                </a>
-                                            </div>
-                                        </div>
+                            <hr>
+                            <div class="button-order">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="addcart.php?id=<?php echo $row['id']; ?>">
+                                            <button class="btn btn-warning btn-md"> Đặt mua </button>
+                                        </a>
                                     </div>
+                                </div>
+                            </div>
 
-                                    <p style="padding-top: 30px;">
-                                        <span class="fa fa-check-circle"></span>&nbsp;&nbsp;&nbsp;GIAO HÀNG TOÀN QUỐC<br>
-                                        <span class="fa fa-check-circle"></span> &nbsp;&nbsp;THANH TOÁN KHI NHẬN HÀNG<br>
-                                        <span class="fa fa-check-circle"></span>&nbsp;&nbsp; ĐỔI HÀNG TRONG 15 NGÀY
-                                    </p>
-                                </div><!-- /.col -->
-                                <!-- // Thông tin sản phẩm -->
-                            </div><!-- /.row -->
-                        </div><!-- /.detail-product -->
-                    </div><!-- /.col -->
-                </div><!-- /.row -->
-            </div><!-- /.container -->
+                            <p style="padding-top: 30px;">
+                                <span class="fa fa-check-circle"></span>&nbsp;&nbsp;&nbsp;GIAO HÀNG TOÀN QUỐC<br>
+                                <span class="fa fa-check-circle"></span> &nbsp;&nbsp;THANH TOÁN KHI NHẬN HÀNG<br>
+                                <span class="fa fa-check-circle"></span>&nbsp;&nbsp; ĐỔI HÀNG TRONG 15 NGÀY
+                            </p>
+                        </div><!-- /.col -->
+                        <!-- // Thông tin sản phẩm -->
+                    </div><!-- /.row -->
+                </div><!-- /.detail-product -->
+            </div><!-- /.col -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
     <?php
         }
     }
     include 'model/footer.php';
     ?>
     <script>
-        new WOW().init();
+    new WOW().init();
     </script>
 </body>
 

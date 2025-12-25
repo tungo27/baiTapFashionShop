@@ -13,18 +13,16 @@ $userId = (int) $_SESSION['id-user'];
 
 
 $sql = "
-    SELECT 
-        idOrder, fullname, phone, address, 
+    SELECT
+        idOrder, fullname, phone, address,
         idProduct, nameProduct, price, quantity, dateOrder, status
-    FROM 
-        view_order_list 
-    WHERE 
+    FROM
+        view_order_list
+    WHERE
         idUser = :user_id
-    ORDER BY 
+    ORDER BY
         dateOrder DESC, idOrder DESC
 ";
-// Note: Nếu bạn không có view_order_list, bạn cần thay thế bằng câu lệnh JOIN 
-// giữa orders, product_order và products.
 
 $stmt = $dbh->prepare($sql);
 $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
@@ -44,7 +42,6 @@ foreach ($order_items as $item) {
             'status' => $item['status'],
             'total' => 0, // Sẽ tính sau
             'items' => [],
-            // Lấy thông tin người nhận (giả định là thông tin cố định trong view/bảng này)
             'recipient' => [
                 'name' => $item['fullname'],
                 'phone' => $item['phone'],
@@ -73,28 +70,7 @@ foreach ($order_items as $item) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch Sử Đơn Hàng Của Tôi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        .order-container {
-            max-width: 1200px;
-            margin: 50px auto;
-            padding: 20px;
-        }
-
-        .order-card {
-            border: 1px solid #dee2e6;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .order-header {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-bottom: 1px solid #dee2e6;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>

@@ -31,7 +31,7 @@ if (isset($_GET['ls'])) {
     <div class="container">
         <!-- Logo -->
         <div class="title">
-            <a href="index.php" title="MyLiShop"> <img src="./images/logohong.png" width="260px;" height="180px;"> </a>
+            <a href="index.php"> <img src="./images/logohong.png" width="260px;" height="180px;"> </a>
         </div>
         <!-- /logo -->
         <div class="col-sm-12 col-md-12 account">
@@ -39,15 +39,15 @@ if (isset($_GET['ls'])) {
                 <?php
                 if (isset($_SESSION['username'])) {
                 ?>
-                <i class="fa fa-user fa-lg"></i>
-                <span><?php echo $_SESSION['username'] ?></span> &nbsp;
-                <span><i class="fa fa-sign-out"></i><a href="user/logout.php"> Đăng xuất </a></span>
+                    <i class="fa fa-user fa-lg"></i>
+                    <span><?php echo $_SESSION['username'] ?></span> &nbsp;
+                    <span><i class="fa fa-sign-out"></i><a href="user/logout.php"> Đăng xuất </a></span>
                 <?php   } else {
                 ?>
-                <i class="fa fa-user fa-lg"></i>
-                <a href="user/login.php"> Đăng nhập </a> &nbsp;
-                <i class="fa fa-users fa-lg"></i>
-                <a href="user/register.php"> Đăng ký </a>
+                    <i class="fa fa-user fa-lg"></i>
+                    <a href="user/login.php"> Đăng nhập </a> &nbsp;
+                    <i class="fa fa-users fa-lg"></i>
+                    <a href="user/register.php"> Đăng ký </a>
                 <?php
                 }
                 ?>
@@ -74,13 +74,19 @@ if (isset($_GET['ls'])) {
                         <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sản Phẩm <b
                                     class="fa fa-caret-down"></b></a>
                             <ul class="dropdown-menu">
-                                <li><a href="fashionboy.php"><i class="fa fa-caret-right"></i> Thời Trang Nam</a>
+
+                                <li><a href="fashiongirl.php"><i class="fa fa-caret-right"></i> Ngoại Ô</a>
+                                </li>
+
+                                <li class="divider"></li>
+                                <li><a href="fashiongirl.php"><i class="fa fa-caret-right"></i> Trung tâm thành phố</a>
+                                </li>
+
+                                <li class="divider"></li>
+                                <li><a href="filter.php?sort=desc"><i class="fa fa-caret-right"></i> Giá giảm dần</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="fashiongirl.php"><i class="fa fa-caret-right"></i> Thời Trang Nữ</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="newproduct.php"><i class="fa fa-caret-right"></i> Hàng Mới Về</a>
+                                <li><a href="filter.php?sort=asc"><i class="fa fa-caret-right"></i> Giá tăng dần</a>
                                 </li>
                             </ul>
                         </li>
